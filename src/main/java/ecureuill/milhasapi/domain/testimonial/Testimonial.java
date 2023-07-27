@@ -29,4 +29,10 @@ public class Testimonial {
         this.testimonial = record.testimonial();
         this.photo = record.photo();
     }
+
+    public void update(TestimonialUpdateRecord record) {
+        this.name = record.name();
+        this.testimonial = record.testimonial();
+        this.photo = record.photo();
+    }
 }
