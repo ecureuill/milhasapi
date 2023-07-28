@@ -8,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -20,11 +22,8 @@ import ecureuill.milhasapi.domain.testimonial.TestimonialCreateRecord;
 import ecureuill.milhasapi.domain.testimonial.TestimonialDetailRecord;
 import ecureuill.milhasapi.domain.testimonial.TestimonialRepository;
 import ecureuill.milhasapi.domain.testimonial.TestimonialUpdateRecord;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
@@ -38,9 +37,9 @@ public class TestimonialController {
     @Transactional
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<TestimonialDetailRecord> save(@RequestBody @Valid TestimonialCreateRecord record, UriComponentsBuilder uriBuilder){
-        var doctor = repository.save(new Testimonial(record));
-        var uri = uriBuilder.path("/doctors/{id}").buildAndExpand(doctor.getId()).toUri();
-        var dto = new TestimonialDetailRecord(doctor);
+        var testimonial = repository.save(new Testimonial(record));
+        var uri = uriBuilder.path("/doctors/{id}").buildAndExpand(testimonial.getId()).toUri();
+        var dto = new TestimonialDetailRecord(testimonial);
 
         return ResponseEntity.created(uri).body(dto);
     }
@@ -52,12 +51,8 @@ public class TestimonialController {
 
     @PutMapping(value="/{id}")
     @Transactional
-    public ResponseEntity<TestimonialDetailRecord> update(@PathVariable Long id, @RequestBody TestimonialUpdateRecord record) {
-        var data = repository.findById(id);
-        if (data.isEmpty()) {
-            throw new EntityNotFoundException();
-        }
-        var testimonial = data.get();
+    public ResponseEntity<TestimonialDetailRecord> update(@PathVariable Long id, @RequestBody @Valid TestimonialUpdateRecord record) {
+        var testimonial = repository.getReferenceById(id);
         testimonial.update(record);
 
         return ResponseEntity.ok().body(new TestimonialDetailRecord(testimonial));
@@ -67,10 +62,6 @@ public class TestimonialController {
     @Transactional
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        var data = repository.findById(id);
-        if (data.isEmpty()) {
-            throw new EntityNotFoundException();
-        }
         repository.deleteById(id);
         
         return ResponseEntity.noContent().build(); 
