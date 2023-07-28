@@ -20,8 +20,7 @@
 
     https://github.com/ecureuill/milhasapi/blob/bce5a450ec3354e84bd6b17c8b16a6ed9b1b3ebd/src/main/resources/application.properties#L1-L3
 
-    !!!Note
-        `mysqldev` is the mysql container name that is running in the same container network as my java development container
+        ℹ️ `mysqldev` is the mysql container name that is running in the same container network as my java development container
 
 1. Create Database
 
@@ -68,10 +67,9 @@ https://github.com/ecureuill/milhasapi/blob/bce5a450ec3354e84bd6b17c8b16a6ed9b1b
 
 1. Run it :checkered_flag:
 
-    !!! tip
-        You can check in swagger, the newly created endpoint
+    You can check in swagger, the newly created endpoint
 
-        ![Swagger-UI](/.github/imgs/image-3.png)
+    ![Swagger-UI](/.github/imgs/image-3.png)
 
 ### :woman_technologist:  Get, PUT and DELETE requests
 
@@ -84,9 +82,8 @@ https://github.com/ecureuill/milhasapi/blob/bce5a450ec3354e84bd6b17c8b16a6ed9b1b
     https://github.com/ecureuill/milhasapi/blob/5a2c7281d8239574a62ab3024ef3db7e17e33d53/src/main/java/ecureuill/milhasapi/controller/TestimonialController.java#L48-L77
 
 1. Run it :checkered_flag:
-
-    !!! tip
-        You can check in swagger, the newly created requests verbs
+   
+    ℹ️ You can check in swagger, the newly created requests verbs
 
 ### :woman_technologist:  Create `depoimentos-home` endpoint
 1. Add `findThreeTestimonials` query to `TestimonialRepository`
@@ -117,12 +114,9 @@ https://github.com/ecureuill/milhasapi/blob/bce5a450ec3354e84bd6b17c8b16a6ed9b1b
 
 1. Fix code :bug:
 
-    https://github.com/ecureuill/milhasapi/blob/5b8313f2eb50efcbd5606cd6d55952ecb38292b8/src/main/java/ecureuill/milhasapi/controller/TestimonialController.java#L52C1-L68C6
+    https://github.com/ecureuill/milhasapi/blob/5b8313f2eb50efcbd5606cd6d55952ecb38292b8/src/main/java/ecureuill/milhasapi/controller/TestimonialController.java#L52-L68
 
-
-    !!! warning
-        Check full code alteration
-        https://github.com/ecureuill/milhasapi/commit/5b8313f2eb50efcbd5606cd6d55952ecb38292b8
+        ⚠️ Check full code alteration on [commit](https://github.com/ecureuill/milhasapi/commit/5b8313f2eb50efcbd5606cd6d55952ecb38292b8)
 
 1. Run test again 🧪
 
