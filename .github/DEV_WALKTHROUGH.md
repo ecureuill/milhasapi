@@ -187,7 +187,7 @@ Pretty much the same as Testimonials
 
 1. Create `DestinationControllerUnitTest`
 
-    https://github.com/ecureuill/milhasapi/blob/a584815df547268581d85fe92751ce42d2c7e32b/src/test/java/ecureuill/milhasapi/controller/DestinationControllerTest.java#L33C1-L212C2
+    https://github.com/ecureuill/milhasapi/blob/a584815df547268581d85fe92751ce42d2c7e32b/src/test/java/ecureuill/milhasapi/controller/DestinationControllerTest.java#L33-L212
 
 
 1. Run tests 🧪 

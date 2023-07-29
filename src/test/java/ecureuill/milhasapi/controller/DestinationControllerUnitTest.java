@@ -33,7 +33,7 @@ import jakarta.persistence.EntityNotFoundException;
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureJsonTesters
-public class DestinationControllerTest {
+public class DestinationControllerUnitTest {
 
     @Autowired
     private MockMvc mockMvc;
