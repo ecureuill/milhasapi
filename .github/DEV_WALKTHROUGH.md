@@ -1,6 +1,8 @@
 # Development Walkthrough
 
-## :tada: Creating a new project
+## 1st STEP
+
+### :tada: Creating a new project
 
 1. Create a project from `Spring Initializr`
     - Java `17`
@@ -33,13 +35,13 @@
     
     ![Swagger-UI Page](/.github/imgs/image-1.png)
 
-## :wrench: First Swagger configuration
+### :wrench: First Swagger configuration
 
 https://github.com/ecureuill/milhasapi/blob/bce5a450ec3354e84bd6b17c8b16a6ed9b1b3ebd/src/main/java/ecureuill/milhasapi/infra/doc/SpringDocConfig.java#L11-L25
 
 ![Updated Swagger-UI](/.github/imgs/image-2.png)
 
-## :woman_technologist: Testimonals
+### :woman_technologist: Testimonals
 
 1. Create table `testimonials` through flyway migration file
 
@@ -53,7 +55,7 @@ https://github.com/ecureuill/milhasapi/blob/bce5a450ec3354e84bd6b17c8b16a6ed9b1b
 
     https://github.com/ecureuill/milhasapi/blob/5a2c7281d8239574a62ab3024ef3db7e17e33d53/src/main/java/ecureuill/milhasapi/domain/testimonial/TestimonialRepository.java#L5-L7
 
-### :woman_technologist:  Post request
+#### :woman_technologist:  Post request
 
 1. Create `TestimonialDetailRecord` and `TestimonialCreateRecord`
 
@@ -71,7 +73,7 @@ https://github.com/ecureuill/milhasapi/blob/bce5a450ec3354e84bd6b17c8b16a6ed9b1b
 
     ![Swagger-UI](/.github/imgs/image-3.png)
 
-### :woman_technologist:  Get, PUT and DELETE requests
+#### :woman_technologist:  Get, PUT and DELETE requests
 
 1. Create `TestimonialUpdateRecord`
 
@@ -85,7 +87,7 @@ https://github.com/ecureuill/milhasapi/blob/bce5a450ec3354e84bd6b17c8b16a6ed9b1b
    
     ℹ️ You can check in swagger, the newly created requests verbs
 
-### :woman_technologist:  Create `depoimentos-home` endpoint
+#### :woman_technologist:  Create `depoimentos-home` endpoint
 1. Add `findThreeTestimonials` query to `TestimonialRepository`
 
     https://github.com/ecureuill/milhasapi/blob/0b7c5991b53b350dd51c904c9496ed0a9a37b4b5/src/main/java/ecureuill/milhasapi/domain/testimonial/TestimonialRepository.java#L10-L15
@@ -94,7 +96,7 @@ https://github.com/ecureuill/milhasapi/blob/bce5a450ec3354e84bd6b17c8b16a6ed9b1b
 
     https://github.com/ecureuill/milhasapi/blob/0b7c5991b53b350dd51c904c9496ed0a9a37b4b5/src/main/java/ecureuill/milhasapi/controller/RandomTestimonialController.java#L15-L27
 
-## :mag: Unit Testing Controllers
+### :mag: Unit Testing Controllers
 
 1. Add datafaker depedency
     
@@ -124,11 +126,76 @@ https://github.com/ecureuill/milhasapi/blob/bce5a450ec3354e84bd6b17c8b16a6ed9b1b
 
     ![Tests output](/.github/imgs/image-5.png)
 
-## :wrench: CORS
+### :wrench: CORS
 
 https://github.com/ecureuill/milhasapi/blob/aa4a16f26ccd6bb6941fe9ae3f5c88c93c3c2e4f/src/main/java/ecureuill/milhasapi/infra/security/CorsConfig.java#L6-L17
 
 <br/>
+
+## 2nd STEP
+
+### :woman_technologist: Destinations
+
+Pretty much the same as Testimonials
+
+1. Create table `destinations` through flyway migration file
+    
+    https://github.com/ecureuill/milhasapi/blob/a584815df547268581d85fe92751ce42d2c7e32b/src/main/resources/db/migration/V2__create_table_destinations.sql#L1-L7
+
+1. Create entity
+
+    https://github.com/ecureuill/milhasapi/blob/6d95e34af4c7ccf769e8b5ede797da5723f61f67/src/main/java/ecureuill/milhasapi/domain/destination/Destination.java#L15-L29
+
+1. Create repository
+    > :sparkle: 
+    >
+    >  Spring Data JPA derived query
+    >
+    > `List<Destination> findAllByNameStartingWith(String name);`
+
+    https://github.com/ecureuill/milhasapi/blob/a584815df547268581d85fe92751ce42d2c7e32b/src/main/java/ecureuill/milhasapi/domain/destination/DestinationRepository.java#L7-L11
+
+1. Create records
+
+    https://github.com/ecureuill/milhasapi/blob/a584815df547268581d85fe92751ce42d2c7e32b/src/main/java/ecureuill/milhasapi/domain/destination/DestinationDetailRecord.java#L5-L19
+
+    https://github.com/ecureuill/milhasapi/blob/a584815df547268581d85fe92751ce42d2c7e32b/src/main/java/ecureuill/milhasapi/domain/destination/DestinationCreateRecord.java#L9-L19
+
+    https://github.com/ecureuill/milhasapi/blob/a584815df547268581d85fe92751ce42d2c7e32b/src/main/java/ecureuill/milhasapi/domain/destination/DestinationUpdateRecord.java#L9-L19
+
+1. Create controller
+
+    https://github.com/ecureuill/milhasapi/blob/a584815df547268581d85fe92751ce42d2c7e32b/src/main/java/ecureuill/milhasapi/domain/destination/Destination.java#L31-L41
+
+    https://github.com/ecureuill/milhasapi/blob/a584815df547268581d85fe92751ce42d2c7e32b/src/main/java/ecureuill/milhasapi/controller/DestinationController.java#L30-L97
+
+    > :sparkle:  
+    >
+    > Use of optional parameter to Get request
+    > 
+    > `public ResponseEntity<List<DestinationDetailRecord>> getAll(@RequestParam(name="name", required = false) String name)` 
+    > 
+    > Communicate the failure of the HTTP request
+    >
+    > `throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Nenhum destino foi encontrado", null);` 
+
+### :mag: Unit Testing Controllers
+
+1. Create fake data
+
+    https://github.com/ecureuill/milhasapi/blob/a584815df547268581d85fe92751ce42d2c7e32b/src/test/java/ecureuill/milhasapi/GenerateData.java#L29-L43
+
+1. Create `DestinationControllerUnitTest`
+
+    https://github.com/ecureuill/milhasapi/blob/a584815df547268581d85fe92751ce42d2c7e32b/src/test/java/ecureuill/milhasapi/controller/DestinationControllerTest.java#L33C1-L212C2
+
+
+1. Run tests 🧪 
+
+### 🥅 Exception Handler
+
+https://github.com/ecureuill/milhasapi/blob/a87a4c5da94134ffc351af8b7109cc21466be35e/src/main/java/ecureuill/milhasapi/infra/expection/ControllerAdvice.java#L10-L27
+
 
 -------------
 

@@ -57,11 +57,14 @@ Used Technologies:
 - **<font color="green">First Week</font>**
     - **Testimonial CRUD** Create `/depoimentos` endpoint to perform CRUD operations. 
     - **Random Testimonials**: Create `depoimentos-home` endpoint to show 3 random testimonials
-    - **CORS**: Enable CORS request from any origin on the development phase.
-    - **Test**: Verify the status code of GET, POST, PUT, DELETE of `/depoimentos` endpoint 
+    - **CORS** Enable CORS request from any origin on the development phase.
+    - **Test** Verify the status code of GET, POST, PUT, DELETE of `/depoimentos` endpoint 
 
-- **Second Week**
-  ...
+- **<font color="green">Second Week</font>**
+    - **Destination CRUD** Create `/destinos` endpoint to perform CRUD operations.
+    - **Search Destination** by name.
+    - **Test** `destinos` endpoint
+
 - **Third and Fourth Week**
     ...
 
