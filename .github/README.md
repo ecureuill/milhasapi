@@ -29,8 +29,8 @@ The goal is to provide information and resource related to possible travel desti
   - [Used Technologies](#used-technologies)  
 - [The Challenge](#dart-the-challenge)
     - [Project Steps](#project-steps)
-- [Walkthrough](#👩‍💻-walkthrough)
-- [API Doc](#📜-api-doc)
+- [Walkthrough](#footprints-walkthrough)
+- [API Doc](#scroll-api-doc)
 
 ## :scroll: About
 
