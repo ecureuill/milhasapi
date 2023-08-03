@@ -25,26 +25,26 @@ The goal is to provide information and resource related to possible travel desti
 
 ## :mag: Table Of Content
 
-- [About](#about)
-- [The Challenge](#🎯-the-challenge)
+- [About](#scroll-about)
+  - [Used Technologies](#used-technologies)  
+- [The Challenge](#dart-the-challenge)
     - [Project Steps](#project-steps)
-- [Walkthrough](#👩‍💻-walkthrough)
-- [API Doc](#📜-api-doc)
+- [Walkthrough](#footprints-walkthrough)
+- [API Doc](#scroll-api-doc)
 
 ## :scroll: About
 
 API in development to the [7th Back-end Challenge](https://www.alura.com.br/challenges/back-end-7/) of Alura.
 
-Used Technologies:
-- Spring Boot 
-- Flywaydb (migrations)
-- SpringDoc
-- Lombok
-- DataFaker
-- MySQL
-- Docker (all my development enviroment run in docker containers)
+### Used Technologies:
+- Language: Java
+- Framework: Spring Boot 
+- Migration Tool: Flywaydb (migrations)
+- Documentation: SpringDoc
+- Other libraries: Lombok, DataFaker
+- Database: MySQL
+- Docker (development enviroment)
 - VS Code
-
 
 ## :dart: The Challenge
 
