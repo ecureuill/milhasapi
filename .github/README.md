@@ -55,18 +55,32 @@ Used Technologies:
 ### Project steps
 
 - **<font color="green">First Week</font>**
-    - **Testimonial CRUD** Create `/depoimentos` endpoint to perform CRUD operations. 
-    - **Random Testimonials**: Create `depoimentos-home` endpoint to show 3 random testimonials
-    - **CORS** Enable CORS request from any origin on the development phase.
-    - **Test** Verify the status code of GET, POST, PUT, DELETE of `/depoimentos` endpoint 
+    - [x] **Testimonial CRUD** Create `/depoimentos` endpoint to perform CRUD operations. 
+    - [x] **Random Testimonials**: Create `depoimentos-home` endpoint to show 3 random testimonials
+    - [x] **CORS** Enable CORS request from any origin on the development phase.
+    - [x] **Test** Verify the status code of GET, POST, PUT, DELETE of `/depoimentos` endpoint 
 
 - **<font color="green">Second Week</font>**
-    - **Destination CRUD** Create `/destinos` endpoint to perform CRUD operations.
-    - **Search Destination** by name.
-    - **Test** `destinos` endpoint
+    - [x] **Destination CRUD** Create `/destinos` endpoint to perform CRUD operations.
+    - [x] **Search Destination** by name.
+    - [x] **Test** `destinos` endpoint
 
 - **Third and Fourth Week**
-    ...
+    - [ ] **Update `destinos` endpoint** with the fields
+        - id
+        - Photo 1
+        - Photo 2
+        - Name
+        - Meta (max 160 characters)
+        - Description text (optional)
+    - [ ] `/destinos/{id}` endpoint should retrieve
+        - Photo 1
+        - Photo 2
+        - Name
+        - Meta
+        - Description text
+    - [ ] **AI integration** to generate description about destination, in case of some destination has no description
+    - [ ] **Test** `destinos` endpoint
 
 ## :footprints: Walkthrough
 
