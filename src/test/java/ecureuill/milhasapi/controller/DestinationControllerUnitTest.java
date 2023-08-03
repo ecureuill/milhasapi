@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.notNull;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Collections;
@@ -54,10 +55,10 @@ public class DestinationControllerUnitTest {
     @DisplayName("Should return DestinationDetailed object when body is valid")
     void testSaveStatusCodeCreated() throws Exception {
         var data = GenerateData.randomDestination();
-        var record = new DestinationCreateRecord(data.getName(), data.getPhoto(), data.getPrice());
+        var record = new DestinationCreateRecord(data.getName(), data.getPhoto(), data.getPhoto2(), data.getMeta(), data.getDescription(), data.getPrice());
         var json = destinationCreateRecord.write(record).getJson();
 
-        var responseJson = destinationDetailRecord.write( new DestinationDetailRecord(data.getId(), data.getName(), data.getPhoto(), data.getPrice())).getJson();
+        var responseJson = destinationDetailRecord.write( new DestinationDetailRecord(data.getId(), data.getName(), data.getPhoto(), data.getPhoto2(), data.getMeta(), data.getDescription(), data.getPrice())).getJson();
 
         Mockito.when(repository.save(any())).thenReturn(data);
 
@@ -72,7 +73,7 @@ public class DestinationControllerUnitTest {
     @DisplayName("Should return status CREATED when body is valid")
     void testSaveContent() throws Exception {
         var data = GenerateData.randomDestination();
-        var record = new DestinationCreateRecord(data.getName(), data.getPhoto(), data.getPrice());
+        var record = new DestinationCreateRecord(data.getName(), data.getPhoto(), data.getPhoto2(), data.getMeta(), data.getDescription(), data.getPrice());
         var json = destinationCreateRecord.write(record).getJson();
 
         Mockito.when(repository.save(any())).thenReturn(data);
@@ -87,7 +88,7 @@ public class DestinationControllerUnitTest {
     @Test
     @DisplayName("Should return status BADREQUEST when body is invalid")
     void testSaveStatusBadRequest() throws Exception {
-        var record = new DestinationCreateRecord(null, null, null);
+        var record = new DestinationCreateRecord(null, null, null, null, null, null);
         var json = destinationCreateRecord.write(record).getJson();
 
         mockMvc.perform(
@@ -173,7 +174,7 @@ public class DestinationControllerUnitTest {
     void testUpdateStatusOK()throws Exception {
 
         var data = GenerateData.randomDestination();
-        var record = new DestinationUpdateRecord(data.getName(), data.getPhoto(), data.getPrice());
+        var record = new DestinationUpdateRecord(data.getName(), data.getPhoto(), data.getPhoto2(), data.getMeta(), data.getDescription(), data.getPrice());
         var json = destinationUpdateRecord.write(record).getJson();
         
         Mockito.when(repository.getReferenceById(data.getId())).thenReturn(data);
@@ -189,7 +190,7 @@ public class DestinationControllerUnitTest {
     void testUpdateStatusNotFound()throws Exception {
 
         var data = GenerateData.randomDestination();
-        var record = new DestinationUpdateRecord(data.getName(), data.getPhoto(), data.getPrice());
+        var record = new DestinationUpdateRecord(data.getName(), data.getPhoto(), data.getPhoto2(), data.getMeta(), data.getDescription(), data.getPrice());
         var json = destinationUpdateRecord.write(record).getJson();
         
          Mockito.when(repository.getReferenceById(data.getId())).thenThrow(EntityNotFoundException.class);
