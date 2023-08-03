@@ -25,18 +25,27 @@ public class Destination {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String photo;
+    private String photo;    
+    private String photo2;
+    private String meta;
+    private String description;
     private BigDecimal Price;
     
     public Destination(@Valid DestinationCreateRecord record) {
         this.name = record.name();
         this.photo = record.photo();
-        this.Price = record.price();        
+        this.photo2 = record.photo2();
+        this.Price = record.price(); 
+        this.meta = record.meta();
+        this.description = record.description();       
     }
 
     public void update(@Valid DestinationUpdateRecord record) {
         this.name = record.name();
         this.photo = record.photo();
+        this.photo2 = record.photo2();
+        this.meta = record.meta();
+        this.description = record.description();
         this.Price = record.price();
     }
 }
