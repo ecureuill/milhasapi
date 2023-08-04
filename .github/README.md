@@ -66,14 +66,14 @@ API in development to the [7th Back-end Challenge](https://www.alura.com.br/chal
     - [x] **Test** `destinos` endpoint
 
 - **Third and Fourth Week**
-    - [ ] **Update `destinos` endpoint** with the fields
+    - [x] **Update `destinos` endpoint** with the fields
         - id
         - Photo 1
         - Photo 2
         - Name
         - Meta (max 160 characters)
         - Description text (optional)
-    - [ ] `/destinos/{id}` endpoint should retrieve
+    - [x] `/destinos/{id}` endpoint should retrieve
         - Photo 1
         - Photo 2
         - Name
