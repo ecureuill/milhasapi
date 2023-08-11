@@ -79,7 +79,7 @@ API in development to the [7th Back-end Challenge](https://www.alura.com.br/chal
         - Name
         - Meta
         - Description text
-    - [ ] **AI integration** to generate description about destination, in case of some destination has no description
+    - [x] **AI integration** to generate description about destination, in case of some destination has no description
     - [ ] **Test** `destinos` endpoint
 
 ## :footprints: Walkthrough
