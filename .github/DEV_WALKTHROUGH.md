@@ -1,5 +1,10 @@
 # Development Walkthrough
 
+- [1st Step](#1st-step)
+- [2nd Step](#2nd-step)
+- [3rd Step](#3rd-step)
+- [4th Step](#4th-step)
+  
 ## 1st STEP
 
 ### :tada: Creating a new project
@@ -196,6 +201,39 @@ Pretty much the same as Testimonials
 
 https://github.com/ecureuill/milhasapi/blob/a87a4c5da94134ffc351af8b7109cc21466be35e/src/main/java/ecureuill/milhasapi/infra/expection/ControllerAdvice.java#L10-L27
 
+## 3rd STEP
+
+### Destination new fields
+
+1. Create migration file
+    https://github.com/ecureuill/milhasapi/blob/e0c90336b1a076c9343ab45c0fb579bbb0791797/src/main/resources/db/migration/V3__alter_table_destinations.sql#L1-L4
+1. Update model
+  https://github.com/ecureuill/milhasapi/blob/3c60e9e6904df9884224d0ad3e50f59f0bf2dec5/src/main/java/ecureuill/milhasapi/domain/destination/Destination.java#L22-L51
+3. Update DestinationCreateRecord
+    https://github.com/ecureuill/milhasapi/blob/3c60e9e6904df9884224d0ad3e50f59f0bf2dec5/src/main/java/ecureuill/milhasapi/domain/destination/DestinationCreateRecord.java#L16-L21
+4. update DestinationDetailRecord
+   https://github.com/ecureuill/milhasapi/blob/3c60e9e6904df9884224d0ad3e50f59f0bf2dec5/src/main/java/ecureuill/milhasapi/domain/destination/DestinationDetailRecord.java#L5-L17
+6. update DestinationUpdateRecord
+    https://github.com/ecureuill/milhasapi/blob/3c60e9e6904df9884224d0ad3e50f59f0bf2dec5/src/main/java/ecureuill/milhasapi/domain/destination/DestinationUpdateRecord.java#L15-L20
+7. update GenerateData
+    https://github.com/ecureuill/milhasapi/blob/3c60e9e6904df9884224d0ad3e50f59f0bf2dec5/src/test/java/ecureuill/milhasapi/GenerateData.java#L35-L37
+8. Update DestinationControllerUnitTest
+    ```java
+    new DestinationUpdateRecord(data.getName(), data.getPhoto(), data.getPhoto2(), data.getMeta(), data.getDescription(), data.getPrice());
+    ```
+### AI integration
+1. Add dependency
+    https://github.com/ecureuill/milhasapi/blob/e0c90336b1a076c9343ab45c0fb579bbb0791797/pom.xml#L21-L25
+2. create service
+    https://github.com/ecureuill/milhasapi/blob/e0c90336b1a076c9343ab45c0fb579bbb0791797/src/main/java/ecureuill/milhasapi/infra/openai/GptGuideService.java#L13-L34
+3. update Destination constructor
+    https://github.com/ecureuill/milhasapi/blob/e0c90336b1a076c9343ab45c0fb579bbb0791797/src/main/java/ecureuill/milhasapi/domain/destination/Destination.java#L43-L46
+4. create environment variable
+   ```bash
+   export OPENAI_KEY=your_openai_api_key
+   ```     
+
+
 
 -------------
 
@@ -207,10 +245,9 @@ For further reference, please consider the following sections:
 * [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.1.2/maven-plugin/reference/html/)
 * [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.1.2/maven-plugin/reference/html/#build-image)
 * [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/3.1.2/reference/htmlsinge/index.html#using.devtools)
-* [Spring HATEOAS](https://docs.spring.io/spring-boot/docs/3.1.2/reference/htmlsinge/index.html#web.spring-hateoas)
-* [Spring Security](https://docs.spring.io/spring-boot/docs/3.1.2/reference/htmlsinge/index.html#web.security)
 * [Spring Data JPA](https://docs.spring.io/spring-boot/docs/3.1.2/reference/htmlsinge/index.html#data.sql.jpa-and-spring-data)
 * [Flyway Migration](https://docs.spring.io/spring-boot/docs/3.1.2/reference/htmlsinge/index.html#howto.data-initialization.migration-tool.flyway)
+* [Openai-java](https://github.com/TheoKanning/openai-java)
 
 ### Guides
 The following guides illustrate how to use some features concretely:
