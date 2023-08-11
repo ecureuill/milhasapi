@@ -19,6 +19,12 @@
 	<dependencies>
 
 		<dependency>
+			<groupId>com.theokanning.openai-gpt3-java</groupId>
+			<artifactId>service</artifactId>
+			<version>0.15.0</version>
+		</dependency>
+
+		<dependency>
 			<groupId>net.datafaker</groupId>
 			<artifactId>datafaker</artifactId>
 			<version>2.0.1</version>
