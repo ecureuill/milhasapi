@@ -2,6 +2,7 @@ package ecureuill.milhasapi.domain.destination;
 
 import java.math.BigDecimal;
 
+import ecureuill.milhasapi.infra.openai.GptGuideService;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -37,7 +38,12 @@ public class Destination {
         this.photo2 = record.photo2();
         this.Price = record.price(); 
         this.meta = record.meta();
-        this.description = record.description();       
+        this.description = record.description();  
+        
+        if(description == null || description == ""){
+            GptGuideService gpt = new GptGuideService();
+            this.description = gpt.generate(this.name);
+        }
     }
 
     public void update(@Valid DestinationUpdateRecord record) {
