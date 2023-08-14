@@ -9,8 +9,6 @@
 ![Git](https://img.shields.io/badge/Git-000?&logo=Git)
 ![VSCode](https://img.shields.io/badge/VSCode-000?&logo=visualstudiocode)
 
-:construction: <font color="yellow">in developement</font>
-
 </div>
 
 <a href="https://www.alura.com.br/challenges/back-end-7/">
@@ -31,6 +29,7 @@ The goal is to provide information and resource related to possible travel desti
     - [Project Steps](#project-steps)
 - [Walkthrough](#footprints-walkthrough)
 - [API Doc](#scroll-api-doc)
+- [Running Locally](#rocket-running-locally)
 
 ## :scroll: About
 
@@ -39,12 +38,13 @@ API in development to the [7th Back-end Challenge](https://www.alura.com.br/chal
 ### Used Technologies:
 - Language: Java
 - Framework: Spring Boot 
-- Migration Tool: Flywaydb (migrations)
-- Documentation: SpringDoc
+- Migration Tool: Flywaydb
+- Documentation: SpringDoc Swagger
+- OpeanAI Integration: [openai-java](https://github.com/TheoKanning/openai-java)
 - Other libraries: Lombok, DataFaker
 - Database: MySQL
-- Docker (development enviroment)
-- VS Code
+- Development environment: Docker
+- Code Editor: VS Code
 
 ## :dart: The Challenge
 
@@ -80,7 +80,7 @@ API in development to the [7th Back-end Challenge](https://www.alura.com.br/chal
         - Meta
         - Description text
     - [x] **AI integration** to generate description about destination, in case of some destination has no description
-    - [ ] **Test** `destinos` endpoint
+    - [x] **Test** `destinos` endpoint
 
 ## :footprints: Walkthrough
 
@@ -88,7 +88,38 @@ Check my steps to develop this project [here](DEV_WALKTHROUGH.md)
 
 ## :scroll: API Doc 
 
-This projects uses [SpringDoc](https://springdoc.org/) to generate API documentation. You can check it by runing the project and accessing [swagger-ui](localhost:8080/swagger-ui/index.html)
+This projects uses [SpringDoc](https://springdoc.org/) (Swagger) to generate API documentation. You can check it by runing the project and accessing [swagger-ui](localhost:8080/swagger-ui/index.html)
+
+## :rocket: Running locally
+
+```bash
+# clone the repository
+git clone https://github.com/ecureuill/milhasapi.git
+
+# Navigate to the cloned directory
+cd milhasapi
+```
+
+MilhasAPI uses MySQL as the database. Create a MySQL database, named **milhasapi** and update the database configuration in `src/main/resources/application.properties` file:
+
+```bash
+spring.datasource.url=jdbc:mysql://[URL]:[PORT]/milhasapi
+spring.datasource.username=[USERNAME]
+spring.datasource.password=[PASSWORD]
+```
+MilhasAPI is integrated to ChatGPT to generate destination description. Create an API key on [openai platform](platform.openai.com) and export it as environmet variable.
+
+```bash
+export OPENAI_KEY=123
+```
+Run the project
+
+```bash
+mvn spring-boot:run
+```
+
+To use this API, you can make HTTP requests to the provided endpoints using tools like cURL or Postman. 
+
 
 <!-- ------------
 
